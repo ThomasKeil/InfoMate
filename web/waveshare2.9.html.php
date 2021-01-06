@@ -27,12 +27,7 @@ try {
 
     $output = [];
 
-    $GET = "";
-    $values = [];
-    foreach ($_GET as $key => $value) {
-        $values[] = $key."=".urlencode($value);
-    }
-    $GET = implode("&", $values);
+    $GET = http_build_query($_GET);
     if ($GET) $GET = "?".$GET;
 
     $command = $WKHTMLTOIMAGE . " --crop-h " . $HEIGHT . " --crop-w " . $WIDTH . " \"" . $URL . $GET . "\" "  . $png_file;
