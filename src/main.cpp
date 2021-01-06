@@ -18,6 +18,8 @@ unsigned int nextUpdate = 0;
 
 unsigned short int paintsWithoutRefresh = 0;
 
+boolean bme280_present = true;
+
 U8G2_IL3820_V2_296X128_1_4W_SW_SPI u8g2(U8G2_R0, /* clock=*/D5, /* data=*/D7, /* cs=*/D8, /* dc=*/D2, /* reset=*/D3);
 
 Adafruit_BME280 bme; // use I2C interface
@@ -91,13 +93,11 @@ void setup(void)
   Wire.begin(D6 /* SDA */, D1 /* SCL */);
 
   if (!bme.begin(0x76)) {
-    Serial.println(F("Could not find a valid BME280 sensor, check wiring!"));
-    while (1) delay(10);
+    Serial.println(F("Could not find a valid BME280 sensor."));
+    bme280_present = false;
   }
   
   connectWifi();
-
-  Serial.println("Timer set to 5 seconds (timerDelay variable), it will take 5 seconds before publishing the first reading.");
 }
 
 void loop(void)
@@ -114,11 +114,14 @@ void loop(void)
       connectWifi();
     }
 
-    sensors_event_t temp_event, humidity_event;
-    bme_temp->getEvent(&temp_event);
-    bme_humidity->getEvent(&humidity_event);
+    String serverPath = infoUrl + "?unitname=" + UNITNAME;
 
-    String serverPath = infoUrl + "?unitname=" + UNITNAME + "&temperature=" + temp_event.temperature + "&humidity=" + humidity_event.relative_humidity;
+    if (bme280_present) {
+      sensors_event_t temp_event, humidity_event;
+      bme_temp->getEvent(&temp_event);
+      bme_humidity->getEvent(&humidity_event);
+      serverPath = serverPath + "&temperature=" + temp_event.temperature + "&humidity=" + humidity_event.relative_humidity;
+    }
 
     int payloadLength = 0;
 

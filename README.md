@@ -19,7 +19,7 @@ The prototype consits of
 
 * [ESP8266F](https://amzn.to/35gbEiF)* on a NodeMCU board
 * Waveshare [e-Paper display](https://amzn.to/2L40eaQ)*, 2.9" 296x128 pixel resolution
-* [BME280 temperature/humidity/pressure sensor](https://amzn.to/3berZIn)*
+* [BME280 temperature/humidity/pressure sensor](https://amzn.to/3berZIn)* (optional)
 
 And, of course, a [breadboard and some wires](https://amzn.to/3s161P0)*.
 
@@ -98,7 +98,9 @@ Obtain EspStacktraceDecoder at [https://github.com/littleyoda/EspStackTraceDecod
 
 The directory [web](web) contains some examples how to create the neccessary data.
 
-The firmware requests data from a URL and expects a payload with either the XBM data or an error message. The request provides temperature and humidity as measured by the BME280 sensor.
+The firmware requests data from a URL and expects a payload with either the XBM data or an error message. 
+
+If a BME280 sensor is connected, the request provides temperature and humidity as measured by the sensor.
 
 It looks like this:
 
