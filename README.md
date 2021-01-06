@@ -28,7 +28,7 @@ Wire it like this:
 
 ## Building the firmware
 
-Build this project is convienient with [PlatformIO](https://docs.platformio.org/en/latest/core/installation.html) and git.
+Build this project is convenient with [PlatformIO](https://docs.platformio.org/en/latest/core/installation.html) and git.
 
 The following instructions are for Linux on the command line.
 
@@ -63,7 +63,7 @@ Make the neccessary changes in these files.
 #define PASSWORD "YOURPASSWORD"
 ```
 
-platformio.ini defines one environment, "default".
+`platformio.ini` defines one environment, `default`.
 If you build more than one InforMate it's probably a good idea to [define more environments](https://docs.platformio.org/en/latest/projectconf/section_env.html#projectconf-section-env) here and use `-D` build flags to `#ifdef` switch some parts in `config.h`. See the example in the code.
 
 ### Build
@@ -82,7 +82,7 @@ To see some debug output use this command:
 pio device monitor
 ```
 
-### Debugging
+### Debugging stackdumps on the serial console
 
 More like a note for me, but use this if necessary.
 
@@ -98,7 +98,7 @@ Obtain EspStacktraceDecoder at [https://github.com/littleyoda/EspStackTraceDecod
 
 The directory [web](web) contains some examples how to create the neccessary data.
 
-The firmware requests data from a URL and expects a payload with either the XBM data or an error message. The request provides temperature and humidity as ... by the BME280 sensor.
+The firmware requests data from a URL and expects a payload with either the XBM data or an error message. The request provides temperature and humidity as measured by the BME280 sensor.
 
 It looks like this:
 
@@ -129,9 +129,9 @@ This makes it exceptionally simple to create nice results in no time.
 
 In the provided examples [example.php](web/example.php) does the rendering and [waveshare2.9.html.php](web/waveshare2.9.html.php) is doing the converting and transmitting.
 
-The data is obtained by creating a snapshot of the website with the help of [wkhtmltopdf](https://wkhtmltopdf.org/) and then converting it to XBM with `convert` by the [ImageMagick](https://imagemagick.org/script/convert.php) project.
+The data is obtained by creating a snapshot of the website with the help of [wkhtmltoimage](https://wkhtmltopdf.org/) and then converting it to XBM with `convert` by the [ImageMagick](https://imagemagick.org/script/convert.php) project.
 
-If you want to use the provided scripts you need to install these binaries.
+If you want to use the provided scripts you need to install these binaries and provided the path in the script.
 
 ## Disclaimer
 
