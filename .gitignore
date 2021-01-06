@@ -1,0 +1,7 @@
+*.bak
+*~
+.pio
+.vscode
+config.h
+platformio.ini
+stacktrace.txt
