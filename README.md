@@ -1,8 +1,4 @@
-# Informate
-
-From <https://en.wikipedia.org/wiki/Informating>:
-
-> Informating [...] is the process that translates descriptions and measurements of activities, events and objects into information. By doing so, these activities become visible to the organization. 
+# InfoMate
 
 ## What is this
 
@@ -35,7 +31,7 @@ The following instructions are for Linux on the command line.
 First, check out the sourcecode:
 
 ```bash
-git clone git@github.com:ThomasKeil/InforMate.git
+git clone git@github.com:ThomasKeil/InfoMate.git
 cd InforMate
 ```
 
