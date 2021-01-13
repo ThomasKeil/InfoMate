@@ -108,7 +108,7 @@ void loop(void)
   {
     nextUpdate = now + ERROR_WAIT; // Default wait is 5 minutes, e.g. in case of an error
     //Check WiFi connection status
-    if (WiFi.status() == WL_CONNECTED)
+    if (WiFi.status() != WL_CONNECTED)
     {
       Serial.println("WiFi Disconnected");
       connectWifi();
